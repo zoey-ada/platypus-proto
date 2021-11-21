@@ -10,12 +10,6 @@ project(
 if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
 	include(cmake/config.cmake)
 
-	# # Testing only available if this is the main app
-	# # Note this needs to be done in the main CMakeLists
-	# # since it calls enable_testing, which must be in the
-	# # main CMakeLists.
-	# include(CTest)
-
 	# # Docs only available if this is the main app
 	# find_package(Doxygen)
 	# if(Doxygen_FOUND)
@@ -26,6 +20,7 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
 
 endif()
 
+enable_testing()
 include(cmake/funcs.cmake)
 add_subdirectory(libraries)
 
@@ -38,6 +33,7 @@ source_group(source FILES source/util.hpp)
 
 target_include_directories(platypus-proto
 	INTERFACE
+		${CMAKE_CURRENT_SOURCE_DIR}/source
 		${CMAKE_CURRENT_BINARY_DIR}/generated/proto/cpp
 		${CMAKE_CURRENT_BINARY_DIR}/generated/proto/cpp/include
 )
@@ -77,3 +73,5 @@ foreach(proto_file ${proto_files})
 	source_group(generated FILES ${generated_cpp})
 	source_group(generated\\include FILES ${generated_cpp_wrapper})
 endforeach()
+
+add_subdirectory(tests)

@@ -1,3 +1,7 @@
+# catch
+add_subdirectory(catch)
+include(${CMAKE_CURRENT_SOURCE_DIR}/../libraries/catch/contrib/Catch.cmake)
+
 # protobuf
 set(protobuf_BUILD_TESTS OFF)
 set(protobuf_BUILD_EXAMPLES OFF)

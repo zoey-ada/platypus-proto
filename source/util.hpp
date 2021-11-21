@@ -6,7 +6,7 @@
 
 namespace platypus
 {
-	
+
 template <class T>
 inline std::string toJson(T protobuf)
 {
