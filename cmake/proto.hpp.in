@@ -1,0 +1,18 @@
+// WARNING: This header file is generated, do not modify
+
+#pragma warning(push)
+#pragma warning(disable : 4068)
+#pragma warning(disable : 4100)
+#pragma warning(disable : 4127)
+#pragma warning(disable : 4146)
+#pragma warning(disable : 4244)
+#pragma warning(disable : 4267)
+#pragma warning(disable : 4512)
+#pragma warning(disable : 4800)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+
+#include "@proto_name@.pb.h"
+
+#pragma GCC diagnostic pop
+#pragma warning(pop)

@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package platypus;
+
+message Settings
+{
+	bool full_screen = 1;
+	bool height = 2;
+}
