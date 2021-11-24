@@ -9,10 +9,11 @@
 #pragma warning(disable : 4267)
 #pragma warning(disable : 4512)
 #pragma warning(disable : 4800)
+#pragma warning(disable : 5054)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 
-#include "@proto_name@.pb.h"
+#include "../@proto_name@.pb.h"
 
 #pragma GCC diagnostic pop
 #pragma warning(pop)

@@ -1,0 +1,4 @@
+configure_file(
+	${input_file}
+	${output_file}
+)
