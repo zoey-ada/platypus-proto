@@ -33,10 +33,24 @@ source_group(source FILES source/util.hpp)
 
 target_include_directories(platypus-proto
 	INTERFACE
-		${CMAKE_CURRENT_SOURCE_DIR}/source
-		${CMAKE_CURRENT_BINARY_DIR}/generated/proto/cpp
-		${CMAKE_CURRENT_BINARY_DIR}/generated/proto/cpp/include
+		${bin_dir}/include
 )
+
+add_custom_command(
+	OUTPUT ${bin_dir}/include/util.hpp
+	COMMENT "copying platypus-proto utils"
+
+	DEPENDS source/util.hpp
+
+	COMMAND ${CMAKE_COMMAND} -E copy
+		${CMAKE_CURRENT_SOURCE_DIR}/source/util.hpp
+		${bin_dir}/include/platypus_proto/util.hpp
+)
+
+add_custom_target(copy-utils
+	DEPENDS ${bin_dir}/include/util.hpp
+)
+add_dependencies(platypus-proto copy-utils)
 
 target_link_libraries(platypus-proto
 	libprotobuf

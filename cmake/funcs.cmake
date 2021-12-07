@@ -6,9 +6,12 @@ function(_pp__compile_proto proto_file include_dir out_dir __out_custom_target
 
 	set(proto_file_full_path "${proto_file_abs}")
 	set(generated_bin "${out_dir}/bin/${proto_name}.bin")
-	set(generated_cpp_wrapper "${out_dir}/cpp/include/${proto_name}.hpp")
-	set(generated_cpp_header "${out_dir}/cpp/${proto_name}.pb.h")
-	set(generated_cpp_impl "${out_dir}/cpp/${proto_name}.pb.cc")
+
+	set(generaged_cpp_root "${bin_dir}/include/platypus_proto")
+	set(generated_cpp_wrapper "${generaged_cpp_root}/${proto_name}.hpp")
+	set(generated_cpp_header "${generaged_cpp_root}/gen/${proto_name}.pb.h")
+	set(generated_cpp_impl "${generaged_cpp_root}/gen/${proto_name}.pb.cc")
+
 	set(generated_cs "${out_dir}/cs/${proto_name}.cs")
 	set(generated_java "${out_dir}/java/${proto_name}.java")
 	set(generated_js "${out_dir}/js/${proto_name}.js")
@@ -31,7 +34,7 @@ function(_pp__compile_proto proto_file include_dir out_dir __out_custom_target
 		COMMAND protoc
 			--proto_path="${include_dir}"
 			--proto_path="${PROTOBUF_INCLUDE_PATH}"
-			--cpp_out="${out_dir}/cpp"
+			--cpp_out="${generaged_cpp_root}/gen"
 			--csharp_out="${out_dir}/cs"
 			--descriptor_set_out="${generated_bin}"
 			# --java_out="${out_dir}/java"

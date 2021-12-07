@@ -13,7 +13,7 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 
-#include "../@proto_name@.pb.h"
+#include "gen/@proto_name@.pb.h"
 
 #pragma GCC diagnostic pop
 #pragma warning(pop)
