@@ -25,32 +25,11 @@ include(cmake/funcs.cmake)
 add_subdirectory(libraries)
 
 add_library(platypus-proto STATIC
-	source/util.hpp
+	source/include/platypus_proto/util.hpp
 )
 _pp__link_static(platypus-proto)
 
-source_group(source FILES source/util.hpp)
-
-target_include_directories(platypus-proto
-	INTERFACE
-		${bin_dir}/include
-)
-
-add_custom_command(
-	OUTPUT ${bin_dir}/include/util.hpp
-	COMMENT "copying platypus-proto utils"
-
-	DEPENDS source/util.hpp
-
-	COMMAND ${CMAKE_COMMAND} -E copy
-		${CMAKE_CURRENT_SOURCE_DIR}/source/util.hpp
-		${bin_dir}/include/platypus_proto/util.hpp
-)
-
-add_custom_target(copy-utils
-	DEPENDS ${bin_dir}/include/util.hpp
-)
-add_dependencies(platypus-proto copy-utils)
+source_group(source FILES source/include/platypus_proto/util.hpp)
 
 target_link_libraries(platypus-proto
 	libprotobuf
@@ -87,5 +66,11 @@ foreach(proto_file ${proto_files})
 	source_group(generated FILES ${generated_cpp})
 	source_group(generated\\include FILES ${generated_cpp_wrapper})
 endforeach()
+
+target_include_directories(platypus-proto
+	INTERFACE
+		${CMAKE_CURRENT_SOURCE_DIR}/source/include
+		${proto_output_dir}/cpp/include
+)
 
 add_subdirectory(tests)

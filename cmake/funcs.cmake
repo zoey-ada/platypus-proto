@@ -7,7 +7,7 @@ function(_pp__compile_proto proto_file include_dir out_dir __out_custom_target
 	set(proto_file_full_path "${proto_file_abs}")
 	set(generated_bin "${out_dir}/bin/${proto_name}.bin")
 
-	set(generaged_cpp_root "${bin_dir}/include/platypus_proto")
+	set(generaged_cpp_root "${out_dir}/cpp/include/platypus_proto")
 	set(generated_cpp_wrapper "${generaged_cpp_root}/${proto_name}.hpp")
 	set(generated_cpp_header "${generaged_cpp_root}/gen/${proto_name}.pb.h")
 	set(generated_cpp_impl "${generaged_cpp_root}/gen/${proto_name}.pb.cc")
