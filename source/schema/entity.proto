@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package platypus;
+
+message RenderComponent_2d {
+    string pixel_shader = 1;
+    string vertex_shader = 2;
+    string texture = 3;
+    uint32 height = 4;
+    uint32 width = 5;
+}
+
+message RenderComponent_3d {
+    string pixel_shader = 1;
+    string vertex_shader = 2;
+    string texture = 3;
+    string mesh = 4;
+    string scale = 5;
+}
+
+message PositionComponent {
+    float x = 1;
+    float y = 2;
+}
+
+message Entity {
+    PositionComponent position_component = 1;
+    RenderComponent_2d render_component_2d = 2;
+    RenderComponent_3d render_component_3d = 3;
+}
