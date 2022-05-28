@@ -6,6 +6,17 @@ import "common.proto";
 message Settings {
     RendererSettings renderer_settings = 1;
     repeated LoggerSettings loggers = 2;
+    GeneralSettings general_settings = 3;
+    ResourceCacheSettings resource_cache_settings = 4;
+}
+
+message GeneralSettings {
+    uint32 event_manager_queue_count = 1;
+}
+
+message ResourceCacheSettings {
+    uint32 cache_size_in_mb = 1;
+    repeated string store_locations = 2;
 }
 
 message RendererSettings {
