@@ -1,0 +1,12 @@
+syntax = "proto3";
+package platypus;
+
+message RectSize {
+    uint32 height = 1;
+    uint32 width = 2;
+}
+
+message Fraction {
+    int32 numerator = 1;
+    int32 denominator = 2;
+}

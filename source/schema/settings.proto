@@ -1,6 +1,7 @@
 syntax = "proto3";
-
 package platypus;
+
+import "common.proto";
 
 message Settings {
     RendererSettings renderer_settings = 1;
@@ -13,16 +14,6 @@ message RendererSettings {
     string background_color = 3;
     bool full_screen = 4;
     RectSize resolution = 5;
-}
-
-message RectSize {
-    uint32 height = 1;
-    uint32 width = 2;
-}
-
-message Fraction {
-    int32 numerator = 1;
-    int32 denominator = 2;
 }
 
 message LoggerSettings {

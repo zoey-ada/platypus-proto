@@ -36,6 +36,7 @@ target_link_libraries(platypus-proto
 )
 
 set(proto_files
+	source/schema/common.proto
 	source/schema/entity.proto
 	source/schema/settings.proto
 )
