@@ -1,0 +1,23 @@
+syntax = "proto3";
+package platypus;
+
+import "common.proto";
+
+message InputCommandMap {
+    uint32 input = 1;
+    string command = 2;
+}
+
+message InputConfiguration {
+    repeated InputCommandMap button_mappings = 1;
+    Fraction refresh_rate = 2;
+}
+
+message Command {
+    string name = 1;
+    string friendly_name = 2;
+}
+
+message CommandList {
+    repeated Command commands = 1;
+}
