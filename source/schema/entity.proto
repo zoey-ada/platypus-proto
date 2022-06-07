@@ -6,8 +6,6 @@ message RenderComponent_2d {
     string pixel_shader = 1;
     string vertex_shader = 2;
     string texture = 3;
-    uint32 height = 4;
-    uint32 width = 5;
 }
 
 message RenderComponent_3d {
@@ -15,17 +13,32 @@ message RenderComponent_3d {
     string vertex_shader = 2;
     string texture = 3;
     string mesh = 4;
-    string scale = 5;
 }
 
-message PositionComponent {
-    float x = 1;
-    float y = 2;
-    float z = 3;
+message TransformComponent_2d {
+    float position_x = 1;
+    float position_y = 2;
+    float scale_x = 3;
+    float scale_y = 4;
+    float rotation_clockwise = 5;
+    float depth = 6;
+}
+
+message TransformComponent_3d {
+    float rotation_x = 1;
+    float rotation_y = 2;
+    float rotation_z = 3;
+    float scale_x = 4;
+    float scale_y = 5;
+    float scale_z = 6;
+    float position_x = 7;
+    float position_y = 8;
+    float position_z = 9;
 }
 
 message Entity {
-    PositionComponent position_component = 1;
-    RenderComponent_2d render_component_2d = 2;
-    RenderComponent_3d render_component_3d = 3;
+    RenderComponent_2d render_component_2d = 1;
+    RenderComponent_3d render_component_3d = 2;
+    TransformComponent_2d transform_component_2d = 3;
+    TransformComponent_3d transform_component_3d = 4;
 }
