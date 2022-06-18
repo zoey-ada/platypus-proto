@@ -36,9 +36,19 @@ message TransformComponent_3d {
     float position_z = 9;
 }
 
+message MovementComponent_2d {
+    float acceleration_x = 1;
+    float acceleration_y = 2;
+    float deceleration_x = 3;
+    float deceleration_y = 4;
+    float max_velocity_x = 5;
+    float max_velocity_y = 6;
+}
+
 message Entity {
     RenderComponent_2d render_component_2d = 1;
     RenderComponent_3d render_component_3d = 2;
     TransformComponent_2d transform_component_2d = 3;
     TransformComponent_3d transform_component_3d = 4;
+    MovementComponent_2d movement_component_2d = 5;
 }
