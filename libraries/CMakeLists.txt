@@ -1,6 +1,8 @@
 # catch
-add_subdirectory(catch)
-include(${CMAKE_CURRENT_SOURCE_DIR}/../libraries/catch/contrib/Catch.cmake)
+if(${is_root_project})
+	add_subdirectory(catch)
+	include(${CMAKE_CURRENT_SOURCE_DIR}/../libraries/catch/contrib/Catch.cmake)
+endif()
 
 # protobuf
 set(protobuf_BUILD_TESTS OFF)
