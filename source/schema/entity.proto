@@ -1,6 +1,7 @@
 syntax = "proto3";
-
 package platypus;
+
+import "common.proto";
 
 message RenderComponent_2d {
     string pixel_shader = 1;
@@ -45,10 +46,22 @@ message MovementComponent_2d {
     float max_velocity_y = 6;
 }
 
+message PhysicsComponent {
+    oneof shape {
+        Shape_2d shape_2d = 1;
+        Shape_3d shape_3d = 2;
+    }
+
+    Vector3 friction = 3;
+    Vector3 max_velocity = 4;
+    float mass = 5;
+}
+
 message Entity {
     RenderComponent_2d render_component_2d = 1;
     RenderComponent_3d render_component_3d = 2;
     TransformComponent_2d transform_component_2d = 3;
     TransformComponent_3d transform_component_3d = 4;
     MovementComponent_2d movement_component_2d = 5;
+    PhysicsComponent physics_component = 6;
 }
