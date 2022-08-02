@@ -55,6 +55,8 @@ message PhysicsComponent {
     Vector3 friction = 3;
     Vector3 max_velocity = 4;
     float mass = 5;
+    float restitution = 6;
+    bool is_solid = 7;
 }
 
 message Entity {
