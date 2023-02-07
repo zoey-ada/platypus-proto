@@ -11,7 +11,7 @@ set(BUILD_SHARED_LIBS OFF)
 set(protobuf_BUILD_SHARED_LIBS OFF)
 set(protobuf_WITH_ZLIB OFF)
 
-add_subdirectory(protobuf/cmake)
+add_subdirectory(protobuf)
 
 _pp__ignore_warnings(libprotobuf)
 _pp__link_static(libprotobuf)
