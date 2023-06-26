@@ -59,6 +59,8 @@ message PhysicsComponent {
     bool is_solid = 7;
 }
 
+message AiComponent {}
+
 message Entity {
     RenderComponent_2d render_component_2d = 1;
     RenderComponent_3d render_component_3d = 2;
@@ -66,4 +68,5 @@ message Entity {
     TransformComponent_3d transform_component_3d = 4;
     MovementComponent_2d movement_component_2d = 5;
     PhysicsComponent physics_component = 6;
+    AiComponent ai_component = 7;
 }
