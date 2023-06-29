@@ -7,20 +7,25 @@ project(
 	LANGUAGES CXX
 )
 
+set(is_root_project FALSE)
 if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
+	set(is_root_project TRUE)
+endif()
+
+if(${is_root_project})
 	include(cmake/config.cmake)
 
 	# # Docs only available if this is the main app
 	# find_package(Doxygen)
 	# if(Doxygen_FOUND)
-	# 	add_subdirectory(docs)
+	# add_subdirectory(docs)
 	# else()
-	# 	message(STATUS "Doxygen not found, not building docs")
+	# message(STATUS "Doxygen not found, not building docs")
 	# endif()
 
+	enable_testing()
 endif()
 
-enable_testing()
 include(cmake/funcs.cmake)
 add_subdirectory(libraries)
 
@@ -36,6 +41,9 @@ target_link_libraries(platypus-proto
 )
 
 set(proto_files
+	source/schema/common.proto
+	source/schema/entity.proto
+	source/schema/input.proto
 	source/schema/settings.proto
 )
 source_group(source\\schema FILES ${proto_files})
@@ -73,4 +81,6 @@ target_include_directories(platypus-proto
 		${proto_output_dir}/cpp/include
 )
 
-add_subdirectory(tests)
+if(${is_root_project})
+	add_subdirectory(tests)
+endif()

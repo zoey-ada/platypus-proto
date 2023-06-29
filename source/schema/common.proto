@@ -1,0 +1,79 @@
+syntax = "proto3";
+package platypus;
+
+message RectSize {
+    uint32 height = 1;
+    uint32 width = 2;
+}
+
+message Fraction {
+    int32 numerator = 1;
+    int32 denominator = 2;
+}
+
+message Extent_2d {
+    float width = 1;
+    float height = 2;
+}
+
+message Extent_3d {
+    float width = 1;
+    float height = 2;
+    float depth = 3;
+}
+
+message Point_2d {
+    float x = 1;
+    float y = 2;
+}
+
+message Point_3d {
+    float x = 1;
+    float y = 2;
+    float z = 3;
+}
+
+message Vector2 {
+    float x = 1;
+    float y = 2;
+}
+
+message Vector3 {
+    float x = 1;
+    float y = 2;
+    float z = 3;
+}
+
+message Rectangle {
+    Point_2d center = 1;
+    Extent_2d dimensions = 2;
+}
+
+message Circle {
+    Point_2d center = 1;
+    float radius = 2;
+}
+
+message Shape_2d {
+    oneof shape_data {
+        Circle circle_data = 1;
+        Rectangle rectangle_data = 2;
+    }
+}
+
+message RectangularPrism {
+    Point_3d center = 1;
+    Extent_3d dimensions = 2;
+}
+
+message Sphere {
+    Point_3d center = 1;
+    float radius = 2;
+}
+
+message Shape_3d {
+    oneof shape_data {
+        Sphere sphere_data = 1;
+        RectangularPrism prism_data = 2;
+    }
+}

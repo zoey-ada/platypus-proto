@@ -1,28 +1,29 @@
 syntax = "proto3";
-
 package platypus;
 
-message Settings {
-    RendererSettings renderer_settings = 1;
-    repeated LoggerSettings loggers = 2;
+import "common.proto";
+
+message ZipFileStoreSettings {
+    string filepath = 1;
 }
 
-message RendererSettings {
-    string renderer_type = 1;
-    Fraction frame_rate = 2;
-    string background_color = 3;
-    bool full_screen = 4;
-    RectSize resolution = 5;
+message ResourceStoreSettings {
+    string type = 1;
+    string identifier = 2;
+
+    oneof type_settings {
+        ZipFileStoreSettings zip_file_store_settings = 3;
+    }
 }
 
-message RectSize {
-    uint32 height = 1;
-    uint32 width = 2;
+message ResourceCacheSettings {
+    uint32 cache_size_in_mb = 1;
+    repeated ResourceStoreSettings resource_stores = 2;
 }
 
-message Fraction {
-    int32 numerator = 1;
-    int32 denominator = 2;
+message FileLoggerSettings {
+    string root_dir = 1;
+    bool use_single_file = 2;
 }
 
 message LoggerSettings {
@@ -34,7 +35,21 @@ message LoggerSettings {
     }
 }
 
-message FileLoggerSettings {
-    string root_dir = 1;
-    bool use_single_file = 2;
+message GeneralSettings {
+    uint32 event_manager_queue_count = 1;
+}
+
+message RendererSettings {
+    string renderer_type = 1;
+    Fraction frame_rate = 2;
+    string background_color = 3;
+    bool full_screen = 4;
+    RectSize resolution = 5;
+}
+
+message Settings {
+    RendererSettings renderer_settings = 1;
+    repeated LoggerSettings loggers = 2;
+    GeneralSettings general_settings = 3;
+    ResourceCacheSettings resource_cache_settings = 4;
 }

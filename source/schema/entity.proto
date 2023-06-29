@@ -1,0 +1,72 @@
+syntax = "proto3";
+package platypus;
+
+import "common.proto";
+
+message RenderComponent_2d {
+    string pixel_shader = 1;
+    string vertex_shader = 2;
+    string texture = 3;
+}
+
+message RenderComponent_3d {
+    string pixel_shader = 1;
+    string vertex_shader = 2;
+    string texture = 3;
+    string mesh = 4;
+}
+
+message TransformComponent_2d {
+    float position_x = 1;
+    float position_y = 2;
+    float scale_x = 3;
+    float scale_y = 4;
+    float rotation_clockwise = 5;
+    float depth = 6;
+}
+
+message TransformComponent_3d {
+    float rotation_x = 1;
+    float rotation_y = 2;
+    float rotation_z = 3;
+    float scale_x = 4;
+    float scale_y = 5;
+    float scale_z = 6;
+    float position_x = 7;
+    float position_y = 8;
+    float position_z = 9;
+}
+
+message MovementComponent_2d {
+    float acceleration_x = 1;
+    float acceleration_y = 2;
+    float deceleration_x = 3;
+    float deceleration_y = 4;
+    float max_velocity_x = 5;
+    float max_velocity_y = 6;
+}
+
+message PhysicsComponent {
+    oneof shape {
+        Shape_2d shape_2d = 1;
+        Shape_3d shape_3d = 2;
+    }
+
+    Vector3 friction = 3;
+    Vector3 max_velocity = 4;
+    float mass = 5;
+    float restitution = 6;
+    bool is_solid = 7;
+}
+
+message AiComponent {}
+
+message Entity {
+    RenderComponent_2d render_component_2d = 1;
+    RenderComponent_3d render_component_3d = 2;
+    TransformComponent_2d transform_component_2d = 3;
+    TransformComponent_3d transform_component_3d = 4;
+    MovementComponent_2d movement_component_2d = 5;
+    PhysicsComponent physics_component = 6;
+    AiComponent ai_component = 7;
+}
