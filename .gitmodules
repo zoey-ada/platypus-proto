@@ -1,6 +1,7 @@
 [submodule "protobuf"]
 	path = libraries/protobuf
 	url = https://github.com/protocolbuffers/protobuf.git
+	branch = 21.x
 [submodule "libraries/catch"]
 	path = libraries/catch
 	url = https://github.com/catchorg/Catch2.git
