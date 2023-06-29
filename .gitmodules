@@ -1,6 +1,6 @@
 [submodule "protobuf"]
 	path = libraries/protobuf
-	url = https://github.com/protocolbuffers/protobuf.git
+	url = git@github.com:zoey-ada/protobuf.git
 	branch = 21.x
 [submodule "libraries/catch"]
 	path = libraries/catch
