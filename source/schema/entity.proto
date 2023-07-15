@@ -3,10 +3,24 @@ package platypus;
 
 import "common.proto";
 
+message SpriteAnimation {
+    string action = 1;
+    int32 hold_time_ms = 2;
+    bool loop = 3;
+    repeated Point_2d frames = 4;
+}
+
+message SpriteSheet {
+    Extent_2d viewport_size = 1;
+    Point_2d neutral_frame = 2;
+    repeated SpriteAnimation animations = 3;
+}
+
 message RenderComponent_2d {
     string pixel_shader = 1;
     string vertex_shader = 2;
     string texture = 3;
+    SpriteSheet sprite_sheet = 4;
 }
 
 message RenderComponent_3d {
